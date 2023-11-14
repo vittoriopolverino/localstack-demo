@@ -1,0 +1,51 @@
+default_stages: [commit]
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: check-added-large-files # Prevent giant files from being committed
+        args: ['--maxkb=5000']
+      - id: check-case-conflict # Check for files with names that would conflict on a case-insensitive filesystem like MacOS HFS+ or Windows FAT.
+      - id: check-json # Attempts to load all json files to verify syntax
+      - id: check-merge-conflict # Check for files that contain merge conflict strings
+      - id: check-toml # Attempts to load all TOML files to verify syntax
+      - id: check-yaml # Attempts to load all yaml files to verify syntax
+      - id: detect-private-key # Checks for the existence of private keys
+      - id: double-quote-string-fixer # This hook replaces double-quoted strings with single quoted strings
+      - id: end-of-file-fixer # Makes sure files end in a newline and only a newline
+        exclude: README.md
+      - id: pretty-format-json # Checks that all your JSON files are pretty. "Pretty" here means that keys are sorted and indented. You can configure this with the following commandline options
+        args: ['--autofix']
+      - id: trailing-whitespace # Trims trailing whitespace.
+        exclude: README.md
+
+  - repo: https://github.com/psf/black
+    rev: 23.1.0
+    hooks:
+      # Black is the uncompromising Python code formatter. By using it, you agree to cede control over minutiae of hand-formatting
+      - id: black
+        args: [ '--line-length=140', '--skip-string-normalization' ]
+
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.0.267
+    hooks:
+      - id: ruff
+        args: ['--line-length=140']
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.0.1
+    hooks:
+      # Mypy is an optional static type checker for Python that aims to combine the benefits of dynamic (or "duck") typing and static typing
+      - id: mypy
+
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.5
+    hooks:
+      - id: bandit
+        args: [ '-r', 'src']
+        exclude: 'tests/'
+
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.72.2
+    hooks:
+      - id: terraform_fmt
