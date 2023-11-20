@@ -155,7 +155,17 @@ def handler(event, context):
             }
         )
 
-        table.put_item(Item={'PK': partition_key, 'SK': '#latest_version', 'last_updated': last_updated, 'TTL': ttl_epoch})
+        is_latest_version = True
+
+        response = table.get_item(Key={'PK': partition_key, 'SK': '#latest_version'}, ProjectionExpression='last_updated')
+
+        if 'Item' in response:
+            existing_last_updated = response['Item'].get('last_updated', None)
+            if existing_last_updated and last_updated < existing_last_updated:
+                is_latest_version = False
+
+        if is_latest_version:
+            table.put_item(Item={'PK': partition_key, 'SK': '#latest_version', 'last_updated': last_updated, 'TTL': ttl_epoch})
 
         return {'statusCode': 200, 'body': json.dumps({'message': 'S3 to DynamoDB - Request processed successfully'})}
     except Exception as exception:
