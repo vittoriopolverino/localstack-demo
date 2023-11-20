@@ -250,10 +250,10 @@ In this particular case, every time an item is inserted into the table, the TTL 
 
 ## 7. Improvements <a name = "7_improvements"></a>
 
-- **Optimize CloudWatch Event Rule Interval:** Explore the optimal time interval for the CloudWatch Event Rule. Invoking the Lambda function every 5 minutes may be excessive and unnecessary
+- **Optimize CloudWatch Event Rule Interval:** Explore the optimal time interval for the CloudWatch Event Rule. Invoking the Lambda function every 5 minutes may be excessive.
 - **Refine Data Partitioning Strategy:** Investigate by considering and anticipating how the data is expected to be used and queried (S3, DynamoDB). Identifying the optimal partition key and strategy can significantly enhance data retrieval efficiency.
 - **Improve S3 Event Consumption:** Consider introducing an SNS topic for S3 event notifications rather than directly invoking the Lambda function. This enables the SNS topic to serve multiple subscribers in the future. In conjunction with the SNS topic, integrate an SQS queue before invoking the Lambda function. If needed, the SQS can reduce the number of invocations if events are processed in batches.
-- **Refine Lifecycle Rules and TTL:** Appropriately configure lifecycle rules on the S3 bucket and TTL in the DynamoDB table
+- **Refine Lifecycle Rules and TTL:** Appropriately configure lifecycle rules on the S3 bucket and TTL in the DynamoDB table.
 
 <br />
 
@@ -284,6 +284,7 @@ poetry run pytest
 - [Poetry](https://python-poetry.org/) | Dependency management and packaging
 - [Pre-Commit](https://pre-commit.com/) | Pre-commit task automation
 - [Bash](https://www.gnu.org/software/bash/) | Scripting
+- [Docker](https://www.docker.com/) | Containerization and Deployment
 - [AWS](https://aws.amazon.com/) | Cloud Provider
 - [LocalSTack](https://www.localstack.cloud/) | Cloud Service Emulator
 - [Terraform](https://www.terraform.io/) | IaC
