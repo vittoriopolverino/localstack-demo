@@ -49,3 +49,21 @@ repos:
     rev: v1.72.2
     hooks:
       - id: terraform_fmt
+
+  - repo: https://github.com/python-poetry/poetry
+    rev: 1.6.0
+    hooks:
+      # The poetry-check hook calls the poetry check command to make sure the poetry configuration does not get committed in a broken state
+      - id: poetry-check
+      # The poetry-lock hook calls the poetry lock command to make sure the lock file is up-to-date when committing changes.
+      - id: poetry-lock
+
+  - repo: local
+    hooks:
+        - id: tests
+          name: tests
+          entry: poetry run pytest -s
+          language: python
+          "types": [ python ]
+          pass_filenames: false
+          stages: [ push ]

@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "local-stack"
+name = "localstack-demo"
 version = "0.1.0"
 description = ""
 authors = ["Vittorio Polverino"]
@@ -7,16 +7,16 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-pre-commit = "^3.3.3"
-pytest = "^7.4.0"
-pytest-cov = "^4.1.0"
-mypy = "^1.5.1"
-ruff = "^0.0.285"
-black = "^23.7.0"
-bandit = "^1.7.5"
 localstack = "^2.3.2"
 terraform-local = "^0.16.0"
-awscli-local = "^0.21"
+awscli-local = "^0.21.1"
+pre-commit = "^3.3.3"
+pytest = "^7.4.3"
+pytest-cov = "^4.1.0"
+mypy = "^1.5.1"
+ruff = "^0.1.5"
+black = "^23.7.0"
+bandit = "^1.7.5"
 
 [build-system]
 requires = ["poetry-core"]
