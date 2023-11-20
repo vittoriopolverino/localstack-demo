@@ -31,8 +31,8 @@ s3_init() {
     month=${filename:5:2}
     day=${filename:8:2}
     destination="s3://dockerhub/raw/year=${year}/month=${month}/day=${day}/${filename}"
-
     poetry run awslocal s3 cp "$file" "$destination" --region us-east-1
+    # poetry run awslocal s3 cp src/dockerhub_to_s3/mock/2023_09_14_150000.json s3://dockerhub/raw/year=2023/month=09/day=14/2023_09_14_150000.json --region us-east-1
     sleep 1
   done
   sleep 2
