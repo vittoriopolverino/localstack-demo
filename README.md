@@ -68,6 +68,8 @@ The script execution will take care of the following operations:
 ## 1. CloudWatch Event <a name = "1_cloud_watch"></a>
 A CloudWatch event rule has been configured to invoke the **"dockerhub-to-s3"** Lambda function at regular five-minute intervals.
 
+<br />
+
 ## 2. Lambda Function (dockerhub-to-s3) <a name = "2_lambda_function"></a>
 The **'dockerhub-to-s3'** Lambda function triggered by CloudWatch, is responsible for retrieving data from the Docker endpoint and storing it in an S3 bucket. 
 
@@ -79,6 +81,7 @@ For example:
 - raw/year=2023/month=09/day=15/2023_09_15_200000.json
 - raw/year=2023/month=10/day=30/2023_10_30_154316.json
 
+<br />
 
 ## 3. S3 <a name = "3_s3"></a>
 The decision to store data on S3 is centered around simplifying organizational-level data access. 
@@ -92,8 +95,12 @@ The adoption of a partitioning structure not only significantly enhances data re
 Objects with the "raw/" prefix are deleted after 365 days, a practice enforced through lifecycle rules.
 Alternatively, the files could be transitioned to a more cost-effective storage class.
 
+<br />
+
 ## 4. S3 Event Notifications <a name = "4_s3_event_notifications"></a>
 Upon the Lambda function uploading a file to S3, an S3 event notification is triggered. The event notification is specifically configured to invoke the **"s3-to-dynamodb"** Lambda function, establishing an automated workflow in response to file uploads on S3.
+
+<br />
 
 ## 5. Lambda Function (s3-to-dynamodb) <a name = "5_lambda_function"></a>
 The **"s3-to-dynamodb"** Lambda function reads the file that triggered the event and saves its content to DynamoDB. 
@@ -102,6 +109,8 @@ Within this Lambda function, aggregations are computed for the star_count and pu
 
 For the sake of simplicity, in this particular scenario, the file name serves as the search criterion. 
 For each combination of year/month, only the most recent file is considered when generating the metrics aggregations.
+
+<br />
 
 ## 6. DynamoDB <a name = "6_dynamodb"></a>
 
@@ -237,6 +246,7 @@ The item in the DynamoDB table includes a TTL attribute, which stands for Time t
 This attribute is configured to specify the expiration time of the item. 
 In this particular case, every time an item is inserted into the table, the TTL is set with a predefined expiration of 60 days.
 
+<br />
 
 ## 7. Improvements <a name = "7_improvements"></a>
 
