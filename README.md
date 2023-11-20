@@ -26,7 +26,7 @@
 # 🤓 About <a name = "about"></a>
 The project relies exclusively on services feature available in the LocalStack Community Edition. 
 
-Given that Amazon Elastic Container Registry (ECR) and Lambda Layers are exclusively accessible with the Pro version,, 
+Given that Amazon Elastic Container Registry (ECR) and Lambda Layers are exclusively accessible with the Pro version, 
 I opted for simplicity and ease of use. Consequently, a decision was made to design a solution that steers clear of using external libraries  facilitating a smoother deployment process for the Lambda Function.
 <br />
 
