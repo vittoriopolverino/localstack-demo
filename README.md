@@ -43,24 +43,25 @@ Before you begin, make sure you have the following tools installed on your machi
 
 <br />
 
-To install the project dependencies, execute the following command:
+To install the project dependencies, execute the following command. 
+Once the script completes, you'll be ready to start working on your Python project with all dependencies in place:
 ```bash
 source scripts/poetry_init.sh 
 ```
-Once the script completes, you'll be ready to start working on your Python project with all dependencies in place.
 
 <br />
 
-To run LocalStack and set up the infrastructure that supports the application, run the following command:
-```bash
-source scripts/localstack_init.sh 
-```
+To run LocalStack and set up the infrastructure that supports the application, run the following command.
 The script execution will take care of the following operations:
 - Start LocalStack.
 - Provision the infrastructure using Terraform.
 - Upload data to S3.
 - Trigger the Lambda function to extract data from the Docker endpoint.
 - Show the stored data in the DynamoDB table.
+
+```bash
+source scripts/localstack_init.sh 
+```
 
 <br />
 
