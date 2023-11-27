@@ -33,8 +33,13 @@ I opted for simplicity and ease of use. Consequently, a decision was made to des
 <br />
 
 # 🏁 Getting Started <a name = "getting_started"></a>
-Before you begin with the project, make sure you have Poetry installed on your machine. 
-If not, you can install it by following the instructions on the [official Poetry installation page](https://python-poetry.org/docs/#installation).
+Before you begin, make sure you have the following tools installed on your machine:
+
+- [Poetry](https://python-poetry.org/docs/#installation)
+
+- [pre-commit](https://pre-commit.com/#install)
+
+- [Terraform](https://www.terraform.io/downloads.html)
 
 <br />
 
@@ -157,7 +162,7 @@ Here is an example of how aggregated metrics information might be stored in the 
 ```json
 "aggregated_metrics_by_year_month": {
     "M": {
-        "2023-10": {
+        "2023_10": {
             "L": [
                 {
                     "M": {
@@ -171,7 +176,7 @@ Here is an example of how aggregated metrics information might be stored in the 
                 }
             ]
         },
-        "2023-11": {
+        "2023_11": {
             "L": [
                 {
                     "M": {
@@ -185,7 +190,7 @@ Here is an example of how aggregated metrics information might be stored in the 
                 }
             ]
         },
-        "2023-09": {
+        "2023_09": {
             "L": [
                 {
                     "M": {

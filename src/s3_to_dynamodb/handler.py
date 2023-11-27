@@ -156,7 +156,6 @@ def handler(event, context):
         )
 
         is_latest_version = True
-
         response = table.get_item(Key={'PK': partition_key, 'SK': '#latest_version'}, ProjectionExpression='last_updated')
 
         if 'Item' in response:
